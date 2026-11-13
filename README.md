@@ -6,8 +6,9 @@ The header shows the logo four rows tall, with the name, the version and the ess
 
 ## Install
 
-Copy or clone this directory into Pi's global extension directory:
+Clone directly into Pi's global extension directory:
 
 ```sh
-~/.pi/agent/extensions/dev-header
+mkdir -p ~/.pi/agent/extensions
+git clone https://github.com/taekwondodev/dev-header.git ~/.pi/agent/extensions/dev-header
 ```
