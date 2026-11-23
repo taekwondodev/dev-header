@@ -9,6 +9,7 @@ import {
   keyText,
   rawKeyHint,
   type Theme,
+  type ThemeColor,
   VERSION,
 } from '@earendil-works/pi-coding-agent'
 import {
@@ -25,6 +26,8 @@ const LOGO_SIZE = getPngDimensions(LOGO)
 const LOGO_ROWS = 4
 const LOGO_GAP = 2
 const MIN_TEXT_COLUMNS = 20
+// Rose in rose-pine-moon: beside the iris `dev` and apart from the footer's pine, foam and gold.
+const PROFILE: ThemeColor = 'syntaxNumber'
 
 // Dev records the conversation's profile as a custom entry; plain Pi has none.
 const devProfile = (ctx: ExtensionContext): string | undefined => {
@@ -45,7 +48,7 @@ const textLines = (theme: Theme, profile: string | undefined): string[] => {
   const dev = process.env.DEV_CODING_AGENT === 'true'
   const identity =
     theme.bold(theme.fg('accent', dev ? 'dev' : 'pi')) +
-    (profile === undefined ? '' : muted(` ${profile}`)) +
+    (profile === undefined ? '' : theme.fg(PROFILE, ` ${profile}`)) +
     theme.fg('dim', dev ? ` · Pi ${VERSION}` : ` ${VERSION}`)
   const hints = [
     keyHint('app.interrupt', 'interrupt'),
